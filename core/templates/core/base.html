@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- materialize css-->
+    <link rel="stylesheet" href="{% static 'node_modules/materialize-css/dist/css/materialize.css' %}">
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <title>{% block title %}Weather{% endblock %}</title>
+
+</head>
+<body id="home">
+    <!-- Navbar -->
+    <section>
+        <nav class="bg-navbar">
+            <div class="navbar-fixed">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="{% url 'home' %}" class="brand-logo logo">Weather</a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down menu">
+                            {% if request.user.is_authenticated %}
+                                <li><a href="#"><i class="material-icons left">person</i>Olá, {{request.user}}</a></li>
+                                <li><a href="{% url 'logoutUser' %}"><i class="material-icons left">directions_walk</i>Logout</a></li>
+                            {% else %}    
+                                <li><a href="{% url 'registerUser' %}"><i class="material-icons left">person_add</i>Resgistre-se</a></li>
+                                <li><a href="{% url 'loginUser' %}"><i class="material-icons left">perm_identity</i>Login</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+            <ul class="sidenav side-menu" id="mobile-demo">
+                <p class="logo center logo-side">Weather</p>
+                {% if request.user.is_authenticated %}
+                    <li><a href="#"><i class="small material-icons left white-text">person</i>Olá, {{request.user}}</a></li>
+                    <li><a href="{% url 'logoutUser' %}"><i class="small material-icons left white-text">directions_walk</i>Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'registerUser' %}"><i class="material-icons left white-text">person_add</i>Resgistre-se</a></li>
+                    <li><a href="{% url 'loginUser' %}"><i class="material-icons left white-text">perm_identity</i>Login</a></li>
+                {% endif %}            
+            </ul>
+        </section>
+    <main>
+        {% block content %}    
+
+        {% endblock %}
+    </main>
+    <!-- footer -->
+    <footer class="footer bg-footer center">
+        <p class="flow-text footer-text white-text">Weather &copy; 2020</p>
+    </footer>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'node_modules/materialize-css/dist/js/materialize.js' %}"></script>
+</body>
+</html>

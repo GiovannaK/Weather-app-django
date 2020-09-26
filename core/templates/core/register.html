@@ -1,0 +1,68 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} Registre-se {% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'assets/css/register.css' %}">
+
+<div class="container">
+	<div class="row card-row">
+		<div class="col l6 offset-l3">
+			<div class="card white card-login">
+				<div class="card-content">
+					<h1 class="center title">Registre-se</h1>
+					<div class="row">
+						<form class="col l12" method="POST">
+							{% csrf_token %}
+						    <div class="row">
+								<div class="input-field col l12">
+									<i class="material-icons prefix">account_circle</i>
+								  	{% render_field creation_form.username class="validate" type="text" %}
+									<label for="icon-user" class="label-user">Usuário</label>
+									<span class="helper-text">{{creation_form.errors.username}}</span>  
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col l12">
+									<i class="material-icons prefix">email</i>
+									{% render_field creation_form.email class="validate" type="text" %}
+									<label for="icon-email" class="label-user">E-mail</label>
+									<span class="helper-text">{{creation_form.errors.email}}</span> 
+								</div>
+							</div>  
+						  	<div class="row">
+								<div class="input-field col l12">
+									<i class="material-icons prefix">lock_outline</i>
+									{% render_field creation_form.password1 class="validate" type="password" %}
+									<label for="icon-lock_out" class="label-pass">Senha</label>
+									<span class="helper-text">{{creation_form.errors.password1}}</span> 
+								</div>
+							  </div>	
+							<div class="row">
+								<div class="input-field col l12">
+									<i class="material-icons prefix">lock_outline</i>
+									{% render_field creation_form.password2 class="validate" type="password" %}
+									<label for="icon-lock_outline" class="label-pass">Confirme a senha</label>
+									<span class="helper-text">{{creation_form.errors.password2}}</span> 
+								</div>
+						  	</div>
+							<div class="center">
+								<div class="row">
+									<button type="submit" class="col s10 offset-s1 
+										center waves-effect waves-light 
+										btn-large btn-login">Registre-me
+									</button>
+								</div>
+							</div>
+						</form>	
+						<a href="{% url 'loginUser' %}" class="forgot-pass">Já possui conta?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

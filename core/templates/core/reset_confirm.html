@@ -1,0 +1,41 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} Altere sua senha {% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'assets/css/reset_confirm.css' %}">
+
+<div class="container">
+    <div class="row card-row">
+        <div class="col l6 offset-l3">
+            <div class="card white card-login">
+                <div class="card-content">
+                    <h1 class="center title">
+                        Altere sua senha abaixo!
+                    </h1>
+                    <div class="row">
+                        <form class="col l12" method="POST">
+						  {% csrf_token %}	
+                            <div class="row">
+                                {{form}}
+                                <span class="helper-text">{{form.errors.password1}}</span> 
+                            </div>	
+                            <div class="center">
+								<div class="row">
+									<button type="submit" class="col s10 offset-s1 
+										center waves-effect waves-light 
+										btn-large btn-login">Enviar
+									</button>
+								</div>
+							</div>
+						</form>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

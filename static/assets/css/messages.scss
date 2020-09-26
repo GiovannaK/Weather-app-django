@@ -1,0 +1,18 @@
+$bgDanger: rgba(255, 0, 0, 0.568);
+$bgSuccess: rgba(14, 173, 14, 0.637);
+$textColor: white;
+$textTransform: uppercase;
+
+.danger{
+    background: $bgDanger;
+    color: $textColor;
+    text-transform: $textTransform;
+}
+
+.success{
+    background: $bgSuccess;
+    color: white;
+    text-transform: uppercase;
+}
+
+

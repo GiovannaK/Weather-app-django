@@ -1,0 +1,24 @@
+{% load static %}
+{% if messages %}
+<link rel="stylesheet" href="{% static 'assets/css/messages.css' %}">
+{% for message in messages %}
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <a class="waves-effect waves-light btn modal-trigger {{message.tags}} btn-msg" href="#modal1">{{message}}
+            <i class="material-icons left">close</i></a>
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>{{message}}</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat btn-close">Fechar</a>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'node_modules/materialize-css/dist/js/materialize.js' %}"></script>

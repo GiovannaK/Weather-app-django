@@ -1,0 +1,51 @@
+{% extends 'core/base.html'%}
+{% load static %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
+
+<div class="container">
+    <div class="row card-row">
+        <div class="col l6 offset-l3">
+            <div class="card white card-login">
+                <div class="card-content">
+                    <h1 class="center title">Login</h1>
+                    <div class="row">
+                        <form class="col l12" method="POST">
+						  {% csrf_token %}	
+                          <div class="row">
+                            <div class="input-field col l12">
+								<i class="material-icons prefix">account_circle</i>
+								  <input id="icon-prefix" type="text" class="validate" 
+								  name="username">
+                              	<label for="icon-prefix" class="label-user">Usuário</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col l12">
+								<i class="material-icons prefix">lock_outline</i>
+								<input id="icon-lock" type="password" class="validate" 
+								name="password">
+								<label for="icon-lock" class="label-pass">Senha</label>
+							</div>
+							<div class="center">
+								<div class="row">
+									<button type="submit" class="col s10 offset-s1 
+										center waves-effect waves-light 
+										btn-large btn-login">Login
+									</button>
+								</div>
+							</div>
+						</form>	
+						<a href="{% url 'password_reset' %}" class="forgot-pass">Esqueceu a senha?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
