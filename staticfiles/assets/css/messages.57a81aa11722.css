@@ -1,0 +1,12 @@
+.danger {
+  background: rgba(255, 0, 0, 0.568);
+  color: white;
+  text-transform: uppercase;
+}
+
+.success {
+  background: rgba(14, 173, 14, 0.637);
+  color: white;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=messages.css.map */
