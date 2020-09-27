@@ -64,10 +64,9 @@ def home(request):
             form = CityForm(request.POST)
             if form.is_valid():
                 new_city = form.cleaned_data['name']
-                city_user = City.objects.filter(user=request.user)
-                exiting_city_user = [i.name for i in city_user.iterator()]
+                city_user = City.objects.filter(user=request.user, name=new_city).count()
 
-                if new_city not in exiting_city_user:
+                if city_user == 0:
                     r = requests.get(url.format(new_city)).json()
                     if r['cod'] == 200:
                         instance = form.save(commit=False)
@@ -89,9 +88,7 @@ def home(request):
         else:
             form = CityForm()
         
-
-    user = request.user
-    cities = City.objects.filter(user=user)
+    cities = City.objects.filter(user=request.user)
     weather_data = []
     for city in cities:
         r = requests.get(url.format(city)).json()
