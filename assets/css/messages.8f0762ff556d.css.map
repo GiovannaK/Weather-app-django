@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAKA,AAAA,OAAO,CAAA;EACH,UAAU,EANH,sBAAsB;EAO7B,KAAK,EALG,KAAK;EAMb,cAAc,EALF,SAAS;CAMxB;;AAED,AAAA,QAAQ,CAAA;EACJ,UAAU,EAXF,wBAAwB;EAYhC,KAAK,EAAE,KAAK;EACZ,cAAc,EAAE,SAAS;CAC5B",
+    "sources": [
+        "../../staticfiles/assets/css/messages.8f0762ff556d.scss"
+    ],
+    "names": [],
+    "file": "messages.8f0762ff556d.css"
+}
